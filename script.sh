@@ -4,6 +4,7 @@
 # simply calls up a sticky growlnotify with your reminder. 
 
 MINUTES=$1
+TIMESTAMP=$(command date +%s)
 TIMER=$(($1 * 60))
 GROWL=/usr/local/bin/growlnotify
 shift
@@ -11,13 +12,13 @@ REMINDER=$*
 echo "$MINUTES minute reminder:"
 echo "$REMINDER"
 
-cat > ~/Library/LaunchAgents/com.approductive.remindersapp.plist <<EOF
+cat > ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.approductive.remindersapp</string>
+	<string>com.approductive.remindersapp.$TIMESTAMP</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>$GROWL</string>
@@ -40,5 +41,4 @@ cat > ~/Library/LaunchAgents/com.approductive.remindersapp.plist <<EOF
 </dict>
 </plist>
 EOF
-chmod +x ~/"Library/Application Support/Alfred/extensions/scripts/Reminders/show_reminder.sh"
-launchctl load ~/Library/LaunchAgents/com.approductive.remindersapp.plist
+launchctl load ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist
