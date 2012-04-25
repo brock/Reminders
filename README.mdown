@@ -1,1 +1,27 @@
-An Alfred Extension
+# Reminders
+An [Alfred](http://alfredapp.com) extension that creates simple, one-time reminders. They don't sync anywhere, they don't repeat. Each reminder will pop up a sticky Growl message.
+
+### Dependencies
+* [Alfred](http://alfredapp.com)
+* [Alfred Powerpack](http://www.alfredapp.com/powerpack)
+* [Growlnotify](http://growl.info/downloads#generaldownloads) - many folks already have this. This extension expects it to be in `/usr/local/bin/growlnotify`. If you run `which growlnotify` and see this path, you're all set.
+
+### Usage
+
+Usage follows the following format:
+
+
+![Usage](http://approductive.files.wordpress.com/2012/04/reminders_syntax.png?w=584&h=171)
+
+* Select a keyword (it is **remindme** by default)
+* Specify (in minutes) when you want to be reminded
+* The reminder text
+
+In 15 minutes you'll see something like this:
+
+![Reminder](http://approductive.files.wordpress.com/2012/04/reminders_output.png)
+
+### Installation
+
+[![Install](http://media.alfredapp.com/scripts/downloadextension.png)](https://github.com/brockangelo/Reminders/raw/master/Reminders.alfredextension)
+
