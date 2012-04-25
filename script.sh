@@ -4,6 +4,7 @@
 # simply calls up a sticky growlnotify with your reminder. 
 
 MINUTES=$1
+TIMESTAMP=$(date)
 TIMER=$(($1 * 60))
 GROWL=/usr/local/bin/growlnotify
 shift
@@ -40,5 +41,4 @@ cat > ~/Library/LaunchAgents/com.approductive.remindersapp.plist <<EOF
 </dict>
 </plist>
 EOF
-chmod +x ~/"Library/Application Support/Alfred/extensions/scripts/Reminders/show_reminder.sh"
 launchctl load ~/Library/LaunchAgents/com.approductive.remindersapp.plist
