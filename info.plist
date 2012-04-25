@@ -7,7 +7,20 @@
 	<key>category</key>
 	<string>SCRIPTS</string>
 	<key>command</key>
-	<string>/bin/bash script.sh {query}</string>
+	<string>growlnotify=$(which growlnotify | awk '{printf("%s",$0)}')
+if [ ! $growlnotify == /usr/local/bin/growlnotify ]; then
+  echo "growlnotify wasn't found."
+  echo "Download it here: http://growl.info/downloads#generaldownloads"
+  open http://growl.info/downloads#generaldownloads
+  exit 1
+fi
+
+if [ ! -d ~/"Library/Application Support/Alfred/extensions/scripts/Reminders" ]; then
+    echo "It looks like your Alfred scripts aren't stored in the default path. You'll have to update the Reminders/script.sh wherever your Alfred scripts are stored."
+    exit 1
+fi
+
+/bin/bash script.sh {query}</string>
 	<key>disabled</key>
 	<false/>
 	<key>escapequery</key>
