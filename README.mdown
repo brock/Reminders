@@ -21,6 +21,12 @@ In 15 minutes you'll see something like this:
 
 ![Reminder](http://approductive.files.wordpress.com/2012/04/reminders_output.png)
 
+You can also run
+
+* remindme cleanup
+
+The reminders you create are stored in `~/Library/LaunchAgents/` as `com.approductive.remindersapp.TIMESTAMP.plist`. OSX doesn't automatically delete these files, so this is a way you can clean up the ones that aren't in use.
+
 ### Installation
 
 [![Install](http://media.alfredapp.com/scripts/downloadextension.png)](https://github.com/brockangelo/Reminders/raw/master/Reminders.alfredextension)
