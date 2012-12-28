@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <update>
-<version>1.3</version>
+<version>1.4</version>
 <url>https://github.com/brockangelo/Reminders/raw/master/Reminders.alfredextension</url>
-<comments>Remove expired reminders on your system by running "remindme cleanup".</comments>
+<comments>chmod the plist to 644 - credit to Mike D.</comments>
 </update>

@@ -7,7 +7,7 @@
 if [[ $1 == "cleanup" ]]; then
 
 	echo "Cleaning up expired reminders..."
-
+	
 	if launchctl list | grep com.approductive.remindersapp > /dev/null; then
 		ACTIVE_REMINDERS=(`launchctl list | grep com.approductive.remindersapp | awk '{print $3}'`)
 		REMINDER_PLISTS=(`ls ~/Library/LaunchAgents/com.approductive.remindersapp.*`)
@@ -56,9 +56,8 @@ cat > ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist <<EO
 	<false/>
 	<key>LaunchOnlyOnce</key>
 	<true/>
-	<key>OnDemand</key>
-	<true/>
 </dict>
 </plist>
 EOF
+chmod 644 ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist
 launchctl load ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist
