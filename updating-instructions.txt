@@ -1,0 +1,7 @@
+## Cheat Sheet for updating this extension and pushing the changes. (if I haven't done this in a while, I forget, though this might be useful for other extension developers too)
+
+1. Make desired script changes in ~/Library/Application\ Support/Alfred/extensions/scripts/Reminders
+2. Update update.xml and appcast.xml with new version number and summary of changes.
+3. Copy all files to the git directory: cp * ~/github/brockangelo/Reminders
+4. In Alfred --> Extensions, right click Reminders and select Export... Save the binary file to the Git directory
+5. Commit and push changes.
