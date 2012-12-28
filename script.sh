@@ -7,19 +7,19 @@
 if [[ $1 == "cleanup" ]]; then
 
 	echo "Cleaning up expired reminders..."
-	
-	if launchctl list | grep com.approductive.remindersapp > /dev/null; then
-		ACTIVE_REMINDERS=(`launchctl list | grep com.approductive.remindersapp | awk '{print $3}'`)
-		REMINDER_PLISTS=(`ls ~/Library/LaunchAgents/com.approductive.remindersapp.*`)
-		for plist in "${REMINDER_PLISTS[@]}"
-		do
-			trimmed_plist=$(basename $plist | sed 's#.plist##g')
-			match=$(echo "${ACTIVE_REMINDERS[@]}" | grep -o "$trimmed_plist")
-			if [[ -z $match ]]; then
-				rm $plist
-			fi
-		done
-	fi
+	ACTIVE_REMINDERS=($(launchctl list | grep com.approductive.remindersapp | awk '{print $3}'))
+	REMINDER_PLISTS=($(command ls ~/Library/LaunchAgents/com.approductive.remindersapp.*))
+
+	total_plists=${#REMINDER_PLISTS[*]}
+	for (( i=0; i<=$(( $total_plists -1 )); i++ ))
+	do
+		trimmed_plist=$(basename ${REMINDER_PLISTS[$i]} | sed 's#.plist##g')
+		is_active=$(echo "${ACTIVE_REMINDERS[@]}" | grep -o "$trimmed_plist")
+		
+		if [[ -z $is_active ]]; then
+			rm ${REMINDER_PLISTS[$i]}
+		fi
+	done
 	exit
 fi
 

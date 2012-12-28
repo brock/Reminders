@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <update>
-<version>1.4</version>
+<version>1.5</version>
 <url>https://github.com/brockangelo/Reminders/raw/master/Reminders.alfredextension</url>
-<comments>chmod the plist to 644 - credit to Mike D.</comments>
+<comments>bug in code wasn't removing reminders. 'reminders cleanup' works now. - credit to Mike D.</comments>
 </update>
