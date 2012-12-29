@@ -70,14 +70,9 @@ cat > ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist <<EO
 	<string>com.approductive.remindersapp.$TIMESTAMP</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>$GROWL</string>
-		<string>-s</string>
-		<string>--image</string>
-		<string>$HOME/Library/Application Support/Alfred/extensions/scripts/Reminders/reminders.png</string>
-		<string>-m</string>
+		<string>/bin/bash</string>
+		<string>$HOME/Library/Application Support/Alfred/extensions/scripts/Reminders/commands.sh</string>
 		<string>$REMINDER</string>
-		<string>-t</string>
-		<string>Reminders</string>
 	</array>
 	<key>StartInterval</key>
 	<integer>$TIMER</integer>
