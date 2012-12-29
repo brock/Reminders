@@ -3,7 +3,12 @@
 # Convert minutes to seconds, then create a one-time cron that
 # simply calls up a sticky growlnotify with your reminder. 
 
-GROWL=/usr/local/bin/growlnotify
+# The COMMANDS_FILE is where you can customize how Reminders looks and sounds.
+# You can even use a different COMMANDS_FILE if you want this to do something completely different.
+# If you don't want to use bash for the COMMANDS_FILE, 
+# change COMMANDS_LANG to the language of your choice: /usr/bin/ruby, /usr/bin/php (etc)
+COMMANDS_LANG=/bin/bash
+COMMANDS_FILE="$HOME/Library/Application Support/Alfred/extensions/scripts/Reminders/commands.sh"
 
 
 ### Cleanup Script Begins ###
@@ -70,8 +75,8 @@ cat > ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist <<EO
 	<string>com.approductive.remindersapp.$TIMESTAMP</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/bin/bash</string>
-		<string>$HOME/Library/Application Support/Alfred/extensions/scripts/Reminders/commands.sh</string>
+		<string>$COMMANDS_LANG</string>
+		<string>$COMMANDS_FILE</string>
 		<string>$REMINDER</string>
 	</array>
 	<key>StartInterval</key>
