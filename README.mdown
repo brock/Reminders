@@ -1,5 +1,5 @@
 # Reminders
-An [Alfred](http://alfredapp.com) extension that creates simple, one-time reminders. They don't sync anywhere, they don't repeat. Each reminder will pop up a sticky Growl message.
+An [Alfred](http://alfredapp.com) extension that creates simple, one-time reminders. They don't sync anywhere, they don't repeat. Each reminder will pop up a sticky Growl message and (optionally) play an audio alert or you can have OSX read it out loud.
 
 ### Dependencies
 * [Alfred](http://alfredapp.com)
@@ -26,6 +26,20 @@ You can also run
 * remindme cleanup
 
 The reminders you create are stored in `~/Library/LaunchAgents/` as `com.approductive.remindersapp.TIMESTAMP.plist`. OSX doesn't automatically delete these files, so this is a way you can clean up the ones that aren't in use.
+
+### Customizing
+
+Thanks to the feedback over at http://approductive.wordpress.com/alfred-reminders/, I've extracted out a lot of the popular requests so you can customize Reminders to work exactly as you want it to work.
+
+In the top of `script.sh` there are two new variables: `$COMMANDS_LANG` and `$COMMANDS_FILE`. This allows you to use any language you want to customize Reminders (ruby, bash, php, etc). The new [commands.sh](https://github.com/brockangelo/Reminders/blob/master/commands.sh) file should give you an idea of what all you can do.
+
+The default [commands.sh](https://github.com/brockangelo/Reminders/blob/master/commands.sh) file allows you to...
+* specify the icon you want to use for the reminder (and change its location)
+* select an audio file you want to use (and a list of OSX default sounds)
+* turn on text-to-speech so that OSX will read the reminder to you out loud
+* specify the voice to use when reading the reminder (and a list of OSX default voices)
+
+It should work out of the box without modifying anything in [commands.sh](https://github.com/brockangelo/Reminders/blob/master/commands.sh).
 
 ### Installation
 

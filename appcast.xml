@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <update>
-<version>1.5</version>
+<version>2.0</version>
 <url>https://github.com/brockangelo/Reminders/raw/master/Reminders.alfredextension</url>
-<comments>bug in code wasn't removing reminders. 'reminders cleanup' works now. - credit to Mike D.</comments>
+<comments>New version adds requested features: audio alerts, text-to-speech (reminders are read to you) and the addition of commands.sh so you can customize just about everything to your liking.</comments>
 </update>
