@@ -13,16 +13,13 @@ COMMANDS_FILE="$HOME/Library/Application Support/Alfred/extensions/scripts/Remin
 
 ### Cleanup Script Begins ###
 
-if [[ $1 == "cleanup" ]]; then
-
+cleanup() {
 	# get the list of plist files this user has created
 	REMINDER_PLISTS=($(command ls ~/Library/LaunchAgents/com.approductive.remindersapp.*))
 	
 	# if there are plists, let's proceed to see if any are expired
 	if [[ -n $REMINDER_PLISTS ]]; then
 
-		echo "Cleaning up expired reminders..."
-		
 		# get list of active reminders
 		ACTIVE_REMINDERS=($(launchctl list | grep com.approductive.remindersapp | awk '{print $3}'))
 		
@@ -41,14 +38,20 @@ if [[ $1 == "cleanup" ]]; then
 			fi
 		done
 	fi
+}
+### Cleanup Script Ends ###
 
+
+# "cleanup" runs every time you create a reminder, but
+# you can still call it manually with 'remindme cleanup'
+if [[ $1 == "cleanup" ]]; then
+
+	echo "Cleaning up expired reminders..."
+	cleanup
 	# exit this script if there were plist files we cleaned up or not
 	exit 0
 
 fi
-
-### Cleanup Script Ends ###
-
 
 ### Create Reminder Begins ###
 # Format: remindme 1 the_reminder
@@ -94,3 +97,6 @@ chmod 644 ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist
 launchctl load ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist
 
 ### Create Reminder Ends ###
+
+# Run Cleanup each time
+cleanup
