@@ -63,7 +63,7 @@ ARGUMENTS=(${1// / })
 # Convert minutes to epoch
 MINUTES=${ARGUMENTS[0]}
 TIMESTAMP=$(command date +%s)
-TIMER=$((${ARGUMENTS[0]} * 1))
+TIMER=$((${ARGUMENTS[0]} * 60))
 
 # Capture all remaining arguments as $REMINDER
 REMINDER=${ARGUMENTS[@]:1}
