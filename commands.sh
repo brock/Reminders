@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This captures all the text you specify when creating your reminder
-REMINDER=$*
+REMINDER=${@:2}
 
 # For some reason, using 'which growlnotify' never worked in tests
 # run 'which growlnotify' and put that path here
@@ -13,7 +13,7 @@ AFPLAY=$(which afplay)
 
 # This is the default location for the reminders.png file
 # Change only if you have moved your Alfred extensions to your Dropbox folder, or somewhere else
-REMINDERS_IMAGE="$HOME/Library/Application Support/Alfred/extensions/scripts/Reminders/reminders.png"
+REMINDERS_IMAGE="$1/icon.png"
 
 # You can choose any audio file for your notification
 # Other options typically in this folder (add .aiff): 
