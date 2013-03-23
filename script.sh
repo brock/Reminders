@@ -8,8 +8,7 @@
 # If you don't want to use bash for the COMMANDS_FILE, 
 # change COMMANDS_LANG to the language of your choice: /usr/bin/ruby, /usr/bin/php (etc)
 COMMANDS_LANG=/bin/bash
-COMMANDS_FILE="$HOME/Library/Application Support/Alfred/extensions/scripts/Reminders/commands.sh"
-
+COMMANDS_FILE="$PWD/commands.sh"
 
 ### Cleanup Script Begins ###
 
@@ -53,18 +52,21 @@ if [[ $1 == "cleanup" ]]; then
 
 fi
 
+# Script arguments seem to come in quoted (ie. all are within $1)
+# Create array of arguments split on space
+ARGUMENTS=(${1// / })
+
 ### Create Reminder Begins ###
 # Format: remindme 1 the_reminder
 # Format: remindme $1 $2
 
 # Convert minutes to epoch
-MINUTES=$1
+MINUTES=${ARGUMENTS[0]}
 TIMESTAMP=$(command date +%s)
-TIMER=$(($1 * 60))
+TIMER=$((${ARGUMENTS[0]} * 1))
 
 # Capture all remaining arguments as $REMINDER
-shift
-REMINDER=$*
+REMINDER=${ARGUMENTS[@]:1}
 echo "$MINUTES minute reminder:"
 echo "$REMINDER"
 
@@ -80,6 +82,7 @@ cat > ~/Library/LaunchAgents/com.approductive.remindersapp.$TIMESTAMP.plist <<EO
 	<array>
 		<string>$COMMANDS_LANG</string>
 		<string>$COMMANDS_FILE</string>
+		<string>$PWD</string>
 		<string>$REMINDER</string>
 	</array>
 	<key>StartInterval</key>
