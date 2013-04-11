@@ -2,7 +2,7 @@
 An [Alfred](http://alfredapp.com) Workflow that creates simple, one-time reminders. They don't sync anywhere, they don't repeat. Each reminder will pop up a sticky Growl message and (optionally) play an audio alert or you can have OSX read it out loud.
 
 ### Dependencies
-* [Alfred](http://alfredapp.com)
+* [Alfred](http://alfredapp.com) - version 2 or greater. If you are running Alfred v.1, the last version of this Plugin that will work is [Reminders version 1.5](https://github.com/brockangelo/Reminders/tree/1.5).
 * [Alfred Powerpack](http://www.alfredapp.com/powerpack)
 * [Growlnotify](http://growl.info/downloads#generaldownloads) - many folks already have this. This extension expects it to be in `/usr/local/bin/growlnotify`. If you run `which growlnotify` and see this path, you're all set.
 
@@ -21,7 +21,7 @@ In 15 minutes you'll see something like this:
 
 ![Reminder](http://approductive.files.wordpress.com/2012/04/reminders_output.png)
 
-The reminders you create are stored in `~/Library/LaunchAgents/` as `com.approductive.remindersapp.TIMESTAMP.plist`. OSX doesn't automatically delete these files, so each time you create a reminder, starting in version 2.1, the script will cleanup old plist files from reminders that have expired. 
+The reminders you create are stored in `~/Library/LaunchAgents/` as `com.approductive.remindersapp.TIMESTAMP.plist`. OSX doesn't automatically delete these files, so each time you create a reminder, starting in Reminders version 2.1, the script will cleanup old plist files from reminders that have expired. 
 
 If you want to cleanup the plist files manually, you can still run:
 
@@ -45,5 +45,11 @@ It should work out of the box without modifying anything in [commands.sh](https:
 
 ### Installation
 
+Click to install:
+
 [![Install](http://media.alfredapp.com/scripts/downloadextension.png)](https://github.com/brockangelo/Reminders/raw/master/Reminders.alfredworkflow)
+
+
+
+
 
