@@ -60,14 +60,31 @@ ARGUMENTS=(${1// / })
 # Format: remindme 1 the_reminder
 # Format: remindme $1 $2
 
-# Convert minutes to epoch
-MINUTES=${ARGUMENTS[0]}
+# Convert time to epoch
+LENGTH=${ARGUMENTS[0]}
+
+# Capture duration and unit format
+DURATION=$(echo $LENGTH | perl -pe 's/(\d+)(\w+)?/$1/')
+UNITS=$(echo $LENGTH | perl -pe 's/(\d+)(\w+)?/$2/')
+
+case $UNITS in
+	[hH] | [hH][rR] | [hH][oO][uU][rR])
+		UNIT="hour"
+		MULTI=3600
+		;;
+	*)
+		UNIT="minute"
+		MULTI=60
+		;;
+esac
+
+TIMER=$(($DURATION * $MULTI))
 TIMESTAMP=$(command date +%s)
-TIMER=$((${ARGUMENTS[0]} * 60))
 
 # Capture all remaining arguments as $REMINDER
 REMINDER=${ARGUMENTS[@]:1}
-echo "$MINUTES minute reminder:"
+
+echo "$DURATION $UNIT reminder:"
 echo "$REMINDER"
 
 # Insert the reminder as a plist file
