@@ -14,7 +14,10 @@ Usage follows the following format:
 ![Usage](http://approductive.files.wordpress.com/2012/04/reminders_syntax.png?w=584&h=171)
 
 * Select a keyword (it is **remindme** by default)
-* Specify (in minutes) when you want to be reminded
+* Specify when you want to be reminded. **UPDATE** You can now specify hours or minutes. Examples:
+	* 15 (defaults to minutes), 15m, 15min
+	* 1h, 1hr, 1hour
+	* Thanks to @doismellburning for the time suggestion.
 * The reminder text
 
 In 15 minutes you'll see something like this:
