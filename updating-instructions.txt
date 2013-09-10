@@ -3,5 +3,6 @@
 1. Make desired script changes in ~/Library/Application\ Support/Alfred/extensions/scripts/Reminders
 2. Update update.xml and appcast.xml with new version number and summary of changes.
 3. Copy all files to the git directory: cp * ~/github/brockangelo/Reminders
-4. In Alfred --> Extensions, right click Reminders and select Export... Save the binary file to the Git directory
+4. In Alfred --> Extensions, right click Reminders and select Export...
+5. Copy the binary file created in number 4 to the Git directory
 5. Commit and push changes.
